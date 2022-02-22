@@ -4,6 +4,7 @@ import com.oujiewen.test.pojo.MyConfig;
 import com.oujiewen.test.pojo.Mystu;
 import com.oujiewen.test.pojo.Stu;
 import com.oujiewen.test.util.JsonResult;
+import com.oujiewen.test.util.MyAsyncTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,5 +62,16 @@ public class HelloController {
         System.out.println("tmp"+file.getOriginalFilename());
         return "上传成功";
     }
+
+    @Autowired
+    private MyAsyncTask myAsyncTask;
+
+    @GetMapping("startAsyncTask")
+    public Object StartAsyncTask(){
+        myAsyncTask.publishMsg();
+        return  JsonResult.ok("start AsyncTask");
+    }
+
+
 
 }

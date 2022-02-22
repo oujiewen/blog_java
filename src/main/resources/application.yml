@@ -8,3 +8,16 @@ spring:
   http:
     multipart:
       resolve-lazily=true:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource #s数据源的类型
+    driver-class-name: com.mysql.jdbc.Driver #mysql 驱动
+    hikari:
+      connection-timeout: 30000 #等待连接池分配链接的最大时长（毫秒）
+      minimum-idle: 5 #最小链接数
+      maximum-pool-size: 20 #最大链接数
+      idle-timeout: 600000 #链接超时的最大时长（毫秒）超时则被释放
+      pool-name: DataSourceHikariCP #链接池名称
+      connection-test-query: SELECT 1
+    url: jdbc:mysql://123.207.4.152:3306/blog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: task
+    password: qazwsx146!aWSXEDC146!A
